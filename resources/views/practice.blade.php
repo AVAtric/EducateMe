@@ -15,3 +15,9 @@
     </div>
 </div>
 @endsection
+
+@section('javascript')
+    <script type="application/javascript">
+        alert('test');
+    </script>
+@endsection
