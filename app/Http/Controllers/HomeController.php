@@ -27,6 +27,6 @@ class HomeController extends Controller
     }
 
     public function score(){
-        return view('score');
+        return view('score', array('scores' => \Auth::User()->scores));
     }
 }

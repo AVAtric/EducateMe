@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,13 +19,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #e3f2fd;">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="img/unicorn.jpg" width="30" height="30" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -36,16 +37,16 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link {{Route::current()->getName() == 'score' ? 'active' : ''}}" href="{{route('score')}}">score</a>
+                                <a class="nav-link {{Route::current()->getName() == 'score' ? 'active' : ''}}" href="{{route('score')}}">Score</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{Route::current()->getName() == 'practice' ? 'active' : ''}}" href="{{route('practice')}}">practice</a>
+                                <a class="nav-link {{Route::current()->getName() == 'practice' ? 'active' : ''}}" href="{{route('practice')}}">Practice</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{Route::current()->getName() == 'test' ? 'active' : ''}}" href="{{route('test')}}">test</a>
+                                <a class="nav-link {{Route::current()->getName() == 'test' ? 'active' : ''}}" href="{{route('test')}}">Test</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{Route::current()->getName() == 'teach' ? 'active' : ''}}" href="{{route('teach')}}">teach</a>
+                                <a class="nav-link {{Route::current()->getName() == 'teach' ? 'active' : ''}}" href="{{route('teach')}}">Teach</a>
                             </li>
                         @endauth
                     </ul>
@@ -90,6 +91,7 @@
             @yield('content')
         </main>
     </div>
+
     @yield('javascript')
 </body>
 </html>
