@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card" id="animal_card" style="width:{{$animal->width}}px;">
                 <img class="card-img-top center" id="animal_img" src="img/{{$animal->filename}}" style="width:{{$animal->width}}px;height:{{$animal->height}}px">
+
                 <div class="card-body">
                     <p class="text-center" id="animal_text">This is
                         {{$animal->prefix}}
@@ -19,6 +20,8 @@
 </div>
 @endsection
 
+
+
 @section('javascript')
     <script type="application/javascript">
     $("#target" ).click(function() {
@@ -31,3 +34,4 @@
     });
     </script>
 @endsection
+
