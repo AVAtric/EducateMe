@@ -55,7 +55,7 @@
                                 $('#animal_id').val(data.id);
                                 $('#animal_name').val('');
                             });
-                        }, 3000);
+                        }, 1000);
                 }
             });
         });
