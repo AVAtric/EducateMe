@@ -22,89 +22,95 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #e3f2fd; z-index: 100;">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="img/unicorn.jpg" width="30" height="30" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<body class="h-100 d-flex flex-column">
+<header>
+    <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #e3f2fd; z-index: 100;">
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="img/unicorn.jpg" width="30" height="30" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        @auth
-                            <li class="nav-item">
-                                <a class="nav-link text-info {{Route::current()->getName() == 'teach' ? 'active' : ''}}" href="{{route('teach')}}"><strong>Teach</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-info{{Route::current()->getName() == 'practice' ? 'active' : ''}}" href="{{route('practice')}}"><strong>Practice</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-info {{Route::current()->getName() == 'test' ? 'active' : ''}}" href="{{route('test')}}"><strong>Test</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-info {{Route::current()->getName() == 'score' ? 'active' : ''}}" href="{{route('score')}}"><strong>Score</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-info {{Route::current()->getName() == 'teach' ? 'active' : ''}}" href="{{route('unicorn')}}"><strong>Safeplace</strong></a>
-                            </li>
-                        @endauth
-                    </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav mr-auto">
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link text-info {{Route::current()->getName() == 'teach' ? 'active' : ''}}"
+                               href="{{route('teach')}}"><strong>Teach</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-info{{Route::current()->getName() == 'practice' ? 'active' : ''}}"
+                               href="{{route('practice')}}"><strong>Practice</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-info {{Route::current()->getName() == 'test' ? 'active' : ''}}"
+                               href="{{route('test')}}"><strong>Test</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-info {{Route::current()->getName() == 'score' ? 'active' : ''}}"
+                               href="{{route('score')}}"><strong>Score</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-info {{Route::current()->getName() == 'teach' ? 'active' : ''}}"
+                               href="{{route('unicorn')}}"><strong>Safeplace</strong></a>
+                        </li>
+                    @endauth
+                </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
+</header>
+<main class="py-4 flex-shrink-0">
+    @yield('content')
+</main>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-
-        <footer class="footer mt-auto py-3">
-            <div class="container">
-                <span class="text-muted">&copy; FH Technikum Wien</span>
-            </div>
-        </footer>
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <span class="text-muted">&copy; FH Technikum Wien</span>
     </div>
+</footer>
 
-
-
-    @yield('javascript')
+@yield('javascript')
 </body>
 </html>
 
