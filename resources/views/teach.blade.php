@@ -4,7 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" id="animal_card" style="width:{{$animal->width}}px;">
+            <p style="font-family:dk_lemon_yellow_sun_regular; font-size:50px; text-align: center">Here you can learn
+                about the different animals. You have infinite time!</p>
+               <div class="card mx-auto mt-5" id="animal_card" style="width:{{$animal->width}}px;">
                 <img class="card-img-top center" id="animal_img" src="img/{{$animal->filename}}" style="width:{{$animal->width}}px;height:{{$animal->height}}px">
 
                 <div class="card-body">
@@ -12,7 +14,7 @@
                         {{$animal->prefix}}
                         {{$animal->name}}.
                     </p>
-                    <button type="button" id="target" class="btn btn-warning btn-lg btn-block">Weiter</button>
+                    <button type="button" id="target" class="btn btn-warning btn-lg btn-block">Continue</button>
                 </div>
             </div>
         </div>
@@ -24,6 +26,12 @@
 
 @section('javascript')
     <script type="application/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
     $("#target" ).click(function() {
         $.getJSON( "animal/get", function( data ) {
             $("#animal_text").text('This is ' + data.prefix + ' ' + data.name + '.');

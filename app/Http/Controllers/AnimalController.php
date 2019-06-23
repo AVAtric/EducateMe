@@ -7,7 +7,17 @@ use App\Animals;
 
 class AnimalController extends Controller
 {
-    function get(){
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    function get_animal(){
         return Animals::inRandomOrder()->get()->first();
     }
 

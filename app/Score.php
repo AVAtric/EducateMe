@@ -10,6 +10,11 @@ class Score extends Model
         'score', 'user_id'
     ];
 
+    protected $dates = [
+        'created_at',
+        'updated_at'
+    ];
+
     function user(){
         return $this->belongsTo(User::class);
     }

@@ -4,13 +4,15 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card" id="animal_card" style="width:{{$animal->width}}px;">
+                <p style="font-family:dk_lemon_yellow_sun_regular; font-size:40px; text-align: center">Here you can
+                practice what you've learnt before. Get ready!</p>
+                <div class="card mx-auto mt-4" id="animal_card" style="width:{{$animal->width}}px;">
                     <img class="card-img-top center" id="animal_img" src="img/{{$animal->filename}}" style="width:{{$animal->width}}px;height:{{$animal->height}}px">
                     <div class="card-body">
                         <p class="text-center" id="animal_text">This is {{$animal->prefix}}</p>
                             <input type="text" id="animal_name" class="center"/>
                             <input type="hidden" id="animal_id" value="{{$animal->id}}">
-                        <button type="button" id="target" class="btn btn-warning btn-lg btn-block mt-3">Weiter</button>
+                        <button type="button" id="target" class="btn btn-warning btn-lg btn-block mt-3">Continue</button>
                         <div id="animal_alert" class="alert alert-danger alert-dismissible fade mt-3" role="alert">
                             <strong>Whoops!</strong> Try again!
                         </div>
@@ -31,6 +33,8 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        //From Stackoverflow
+
 
         $("#target" ).click(function() {
             $.post( "animal/check", { name: $('#animal_name').val(), id: $('#animal_id').val()}, function(data) {

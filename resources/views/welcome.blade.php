@@ -74,7 +74,9 @@
             @endif
 
             <div class="content">
-                <img src="{{asset('img/EducateMe.png')}}" alt="Picture not found!" />
+
+                <img src="{{asset('img/frontpage.png')}}" alt="Picture not found!" />
+                <p style="font-family:dk_lemon_yellow_sun_regular; font-size:50px; text-align: center">All the animals in the world!</p>
             </div>
         </div>
     </body>

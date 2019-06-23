@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #e3f2fd; z-index: 100;">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="img/unicorn.jpg" width="30" height="30" alt="">
@@ -37,16 +38,19 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link {{Route::current()->getName() == 'score' ? 'active' : ''}}" href="{{route('score')}}">Score</a>
+                                <a class="nav-link text-info {{Route::current()->getName() == 'teach' ? 'active' : ''}}" href="{{route('teach')}}"><strong>Teach</strong></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{Route::current()->getName() == 'practice' ? 'active' : ''}}" href="{{route('practice')}}">Practice</a>
+                                <a class="nav-link text-info{{Route::current()->getName() == 'practice' ? 'active' : ''}}" href="{{route('practice')}}"><strong>Practice</strong></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{Route::current()->getName() == 'test' ? 'active' : ''}}" href="{{route('test')}}">Test</a>
+                                <a class="nav-link text-info {{Route::current()->getName() == 'test' ? 'active' : ''}}" href="{{route('test')}}"><strong>Test</strong></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{Route::current()->getName() == 'teach' ? 'active' : ''}}" href="{{route('teach')}}">Teach</a>
+                                <a class="nav-link text-info {{Route::current()->getName() == 'score' ? 'active' : ''}}" href="{{route('score')}}"><strong>Score</strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-info {{Route::current()->getName() == 'teach' ? 'active' : ''}}" href="{{route('unicorn')}}"><strong>Safeplace</strong></a>
                             </li>
                         @endauth
                     </ul>
@@ -90,8 +94,18 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <span class="text-muted">&copy; FH Technikum Wien</span>
+            </div>
+        </footer>
     </div>
+
+
 
     @yield('javascript')
 </body>
 </html>
+
+

@@ -25,9 +25,10 @@ Route::get('/score', 'HomeController@score')->name('score');
 Route::get('/practice', 'PracticeController@practice')->name('practice');
 Route::get('/test', 'PracticeController@test')->name('test');
 Route::get('/teach', 'PracticeController@teach')->name('teach');
-Route::get('/animal/get', 'AnimalController@get')->name('get_animal');
+Route::get('/animal/get', 'AnimalController@get_animal')->name('get_animal');
 Route::post('/animal/check', 'AnimalController@check')->name('check_animal');
 Route::post('/save/score', 'PracticeController@save_score')->name('save_score');
+Route::get('/unicorn', 'HomeController@unicorn')->name('unicorn');
 
 //https://laravel.com/docs/5.8/routing
 //For Routing in Laravel. All Laravel routes are defined in your route files, which are located in the routes directory.
